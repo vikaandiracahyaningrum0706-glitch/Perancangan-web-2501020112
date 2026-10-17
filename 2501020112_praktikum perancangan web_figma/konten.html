@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PORTOmaker – Pika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Press+Start+2P&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+  <symbol id="i-threads" viewBox="0 0 24 24"><text x="12" y="19" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="24" fill="currentColor">@</text></symbol>
+  <symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5 5.2Q12 2 19 5.2L22.2 17Q17.5 20.2 15.5 19.6L14.4 18H9.6L8.5 19.6Q6.5 20.2 1.8 17ZM8.6 10.2a1.9 2.2 0 1 0 .01 0ZM15.4 10.2a1.9 2.2 0 1 0 .01 0Z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.4"/></g><circle cx="17.6" cy="6.4" r="1.5" fill="currentColor"/></symbol>
+</svg>
+
+<header class="topbar">
+  <a class="logo" href="#home" data-view="home">PORTO<span>maker</span></a>
+  <nav class="nav glass" aria-label="Menu utama">
+    <button class="nav-btn is-active" data-view="home">HOME</button>
+    <button class="nav-btn" data-view="about">ABOUT</button>
+    <button class="nav-btn" data-view="contact">CONTACT ME</button>
+  </nav>
+</header>
+
+<main class="stage">
+
+  <!-- HOME -->
+  <section class="panel glass view is-active" id="view-home">
+    <div class="home">
+      <div class="home-text">
+        <h1>HI THERE, PIKA IS THE NAME!</h1>
+        <p>Pika as in “Vika Andira Cahyaningrum”, An indie self-taught Graph designer originally from Tanjungpinang, Kepri, Indonesia. A Student from UMRAH, a maritime-engineering based university located in Senggarang, Kepri.</p>
+      </div>
+
+      <figure class="frame-wrap">
+        <img class="cat" src="assets/cat.png" alt="" aria-hidden="true">
+        <div class="portrait">
+          <img class="portrait__photo" src="assets/pika.jpg" alt="Foto Pika">
+          <img class="portrait__frame" src="assets/frame.png" alt="" aria-hidden="true">
+        </div>
+      </figure>
+
+      <aside class="skills">
+        <div class="skills-col">
+          <h2>Software I used</h2>
+          <ul class="software">
+            <li>Figma</li>
+            <li class="script">Canva</li>
+          </ul>
+        </div>
+        <div class="skills-col">
+          <h2>Coding</h2>
+          <p class="small">Able to use</p>
+          <ul>
+            <li>HTML</li><li>CSS</li><li>C++</li><li>C</li><li>JAVA</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="panel glass view" id="view-about">
+    <div class="about">
+      <ul class="about-menu" role="tablist">
+        <li><button class="about-btn" role="tab" data-sub="personal"><img class="orb" src="assets/orb.png" alt="" aria-hidden="true"><span>Personal Info</span></button></li>
+        <li><button class="about-btn" role="tab" data-sub="academic"><img class="orb" src="assets/orb.png" alt="" aria-hidden="true"><span>Academic History &amp; Achievements</span></button></li>
+        <li><button class="about-btn" role="tab" data-sub="socials"><img class="orb" src="assets/orb.png" alt="" aria-hidden="true"><span>Socials</span></button></li>
+        <li><button class="about-btn" role="tab" data-sub="more"><img class="orb" src="assets/orb.png" alt="" aria-hidden="true"><span>Further More...</span></button></li>
+      </ul>
+
+      <div class="about-content">
+        <div class="sub" data-sub="personal">
+          <p>Pika as in “Vika Andira Cahyaningrum”, An indie self-taught Graph designer originally from Tanjungpinang, Kepri, Indonesia. A Student from UMRAH, a maritime-engineering based university located in Senggarang, Kepri.</p>
+        </div>
+        <div class="sub" data-sub="academic">
+          <p>Academic History :</p>
+          <ul>
+            <li>TK – TK Ar-Rasyid (---)</li>
+            <li>SD – SDN 004 Teladan (2012–2018)</li>
+            <li>SMP – SMPN 05 Pancur (2018 – 2020)</li>
+            <li>SMA – SMAN 2 TANJUNGPINANG (2021 – 2024)</li>
+          </ul>
+          <p class="gap">Achievements :<br>not found 404</p>
+        </div>
+        <div class="sub" data-sub="socials">
+          <p class="center">Link down below!!</p>
+        </div>
+        <div class="sub" data-sub="more">
+          <p class="center">Coming soon…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- CONTACT -->
+  <section class="panel glass view" id="view-contact">
+    <div class="contact">
+      <h2 class="find">FIND ME ON :</h2>
+      <ul class="socials socials--lg">
+        <li><a href="https://x.com/pikaaaasuw" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vikaandiracahyaningrum0706@gmail.com" target="_blank" rel="noopener" aria-label="Kirim email via Gmail"><svg><use href="#i-threads"/></svg></a></li>
+        <li><a href="https://discord.com/app" target="_blank" rel="noopener" aria-label="Discord: pikaaaasuw" title="Discord: pikaaaasuw"><svg><use href="#i-discord"/></svg></a></li>
+        <li><a href="https://github.com/vikaandiracahyaningrum0706-glitch" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a></li>
+        <li><a href="https://instagram.com/pikaaaasuw" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Find me on (Home & About) -->
+  <footer class="findbar" id="findbar">
+    <h2 class="find">FIND ME ON :</h2>
+    <ul class="socials">
+      <li><a href="https://x.com/pikaaaasuw" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a></li>
+      <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vikaandiracahyaningrum0706@gmail.com" target="_blank" rel="noopener" aria-label="Kirim email via Gmail"><svg><use href="#i-threads"/></svg></a></li>
+      <li><a href="https://discord.com/app" target="_blank" rel="noopener" aria-label="Discord: pikaaaasuw" title="Discord: pikaaaasuw"><svg><use href="#i-discord"/></svg></a></li>
+      <li><a href="https://github.com/vikaandiracahyaningrum0706-glitch" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a></li>
+      <li><a href="https://instagram.com/pikaaaasuw" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a></li>
+    </ul>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
