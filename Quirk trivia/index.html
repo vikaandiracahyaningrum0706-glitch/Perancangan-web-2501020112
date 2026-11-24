@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QUIRK — a quick daily trivia challenge.">
+  <title>QUIRK — Daily Trivia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { night: "#101116", panel: "#191b24", line: "#30313d", violet: "#b7a2ff", mint: "#b7f0d0", muted: "#a3a4b4" },
+        fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] }
+      }}
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-night text-white min-h-screen">
+  <header class="max-w-6xl mx-auto px-5 py-6 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center gap-3">
+      <span class="logo-mark">Q</span>
+      <span class="font-black tracking-[.22em] text-sm">QUIRK<span class="text-violet">.</span></span>
+    </a>
+    <div class="flex items-center gap-3">
+      <span class="text-xs text-muted tracking-widest uppercase hidden sm:block" data-i18n="tagline">A LITTLE KNOWLEDGE, EVERY DAY</span>
+      <button id="languageToggle" class="lang-button" type="button" aria-label="Change language">ID / EN</button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 pb-16">
+    <section class="intro-grid rounded-3xl p-7 sm:p-10 md:p-14 relative overflow-hidden">
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="relative z-10 max-w-2xl">
+        <p class="eyebrow mb-4" data-i18n="eyebrow">THE DAILY CURIOSITY CLUB</p>
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black leading-[1.02]"><span data-i18n="heroLine1">Stay curious.</span><br><span class="gradient-text" data-i18n="heroLine2">Know more.</span></h1>
+        <p class="text-muted mt-5 max-w-lg leading-relaxed" data-i18n="heroDescription">A quick trivia break for your brain. Pick a topic, test what you know, and learn something unexpected.</p>
+        <a href="#play" class="inline-flex mt-7 items-center gap-3 rounded-xl bg-violet text-night font-bold px-5 py-3 hover:brightness-110 transition"><span data-i18n="heroButton">Let's play</span><span>→</span></a>
+      </div>
+      <div class="relative z-10 mt-10 md:mt-0 md:absolute md:right-12 md:bottom-10 md:text-right">
+        <p class="font-mono text-xs text-muted" data-i18n="reminderLabel">A QUICK REMINDER</p>
+        <p class="text-xl font-semibold mt-1" data-i18n="reminderText">Curiosity looks good on you.</p>
+      </div>
+    </section>
+
+    <section id="play" class="grid lg:grid-cols-[.8fr_1.2fr] gap-6 mt-8">
+      <aside class="panel rounded-2xl p-6 sm:p-7 h-fit">
+        <p class="eyebrow" data-i18n="setupEyebrow">01 / SET YOUR ROUND</p>
+        <h2 class="text-2xl font-extrabold mt-2" data-i18n="setupTitle">Pick your challenge.</h2>
+        <p class="text-sm text-muted mt-2" data-i18n="setupDescription">Choose a category and difficulty. We'll bring the questions.</p>
+
+        <label class="block text-xs font-semibold text-muted mt-7 mb-2" for="category" data-i18n="categoryLabel">CATEGORY</label>
+        <select id="category" class="field w-full">
+          <option value="" data-i18n="anyCategory">Any category</option>
+          <option value="9">General Knowledge</option>
+          <option value="17">Science & Nature</option>
+          <option value="18">Computers</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="27">Animals</option>
+          <option value="11">Film</option>
+          <option value="12">Music</option>
+          <option value="15">Video Games</option>
+        </select>
+
+        <label class="block text-xs font-semibold text-muted mt-5 mb-2" for="difficulty" data-i18n="difficultyLabel">DIFFICULTY</label>
+        <select id="difficulty" class="field w-full">
+          <option value="" data-i18n="mixedDifficulty">Mixed difficulty</option>
+          <option value="easy" data-i18n="easy">Easy</option>
+          <option value="medium" data-i18n="medium">Medium</option>
+          <option value="hard" data-i18n="hard">Hard</option>
+        </select>
+
+        <button id="startButton" class="primary-button w-full mt-7"><span data-i18n="generateButton">Generate 10 questions</span><span>↗</span></button>
+        <p class="text-xs text-muted mt-4 leading-relaxed" data-i18n="apiNote">Questions are fetched live from Open Trivia Database. Internet connection required.</p>
+      </aside>
+
+      <section class="panel rounded-2xl p-6 sm:p-7 min-h-[440px] flex flex-col" aria-live="polite">
+        <div class="flex items-center justify-between gap-3">
+          <p class="eyebrow" data-i18n="quizEyebrow">02 / YOUR QUIZ</p>
+          <span id="progressLabel" class="font-mono text-xs text-muted" data-i18n="readyLabel">READY WHEN YOU ARE</span>
+        </div>
+        <div id="quizArea" class="flex-1 flex flex-col justify-center">
+          <div class="empty-illustration mx-auto mb-6"><span>?</span></div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-center" data-i18n="emptyTitle">Your next fact is waiting.</h2>
+          <p class="text-sm text-muted text-center max-w-sm mx-auto mt-3" data-i18n="emptyDescription">Choose your settings and hit the button to start a fresh round.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="mt-8 grid sm:grid-cols-3 gap-4">
+      <div class="stat-card"><span class="stat-icon">✳</span><div><p class="font-bold" data-i18n="feature1Title">Fresh questions</p><p class="text-xs text-muted mt-1" data-i18n="feature1Desc">New trivia every round.</p></div></div>
+      <div class="stat-card"><span class="stat-icon">⌁</span><div><p class="font-bold" data-i18n="feature2Title">Learn as you play</p><p class="text-xs text-muted mt-1" data-i18n="feature2Desc">Instant answer feedback.</p></div></div>
+      <div class="stat-card"><span class="stat-icon">◎</span><div><p class="font-bold" data-i18n="feature3Title">Your pace, your rules</p><p class="text-xs text-muted mt-1" data-i18n="feature3Desc">Choose your own difficulty.</p></div></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 py-6 flex flex-col sm:flex-row justify-between gap-2 text-xs text-muted">
+      <p data-i18n="footer">© 2026 QUIRK. Built for curious minds.</p>
+      <p><span data-i18n="dataBy">Trivia data by</span> <a href="https://opentdb.com/" target="_blank" rel="noreferrer" class="text-violet hover:underline">Open Trivia Database</a>.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
